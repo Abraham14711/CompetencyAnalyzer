@@ -1,0 +1,42 @@
+{% extends "shared/base.html" %}
+
+{% block title %}Auth Page{% endblock %}
+
+{% block content %}
+
+    {% block style %}
+        <style xmlns="http://www.w3.org/1999/html">
+
+            .container1 {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                height: 100vh;
+            }
+
+            .aligncenter {
+                display: block;
+                margin-left: auto;
+                margin-right: auto;
+                width: 50%;
+            }
+
+        </style>
+    {% endblock %}
+    <body>
+    <div class="container1">
+        <div class="header">
+            <center><h1><b>{{ translator.t("messages.hr_auth") }}</b></h1></center>
+            <div class="img-box">
+                <img class="aligncenter" src="/static/avatar.png"/>
+            </div>
+        </div>
+        <script async src="https://telegram.org/js/telegram-widget.js?22"
+                data-telegram-login="Competency_Jobster_Auth_bot"
+                data-size="large" data-auth-url="{{ auth_page }}"
+                data-request-access="write"></script>
+    </div>
+    </body>
+
+{% endblock %}

@@ -1,0 +1,21 @@
+{% extends "shared/base.html" %}
+
+{% block title %}View {{ user_name }} Data{% endblock %}
+
+{% block content %}
+    <br>
+    <br>
+    <br>
+<div class="card text-center">
+  <div class="card-header">
+    <h1>{{ user_name }}</h1>
+  </div>
+  <div class="card-body">
+    <h5 class="card-title">{{ translator.t('messages.user_report') }}</h5>
+    <p class="card-text">{{ translator.translate_text(user_data) }}</p>
+  </div>
+  <div class="card-footer text-muted">
+    <a href="/show_users" class="btn btn-primary">{{ translator.t('messages.back') }}</a>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,356 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ index_title }}{% endblock %}
+
+{% block content %}
+{% block style %}
+<style>
+    /* Your existing styles */
+    .button-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 10px;
+    }
+
+    .grid-button {
+        background-color: transparent;
+        color: #333333;
+        border-radius: 30px;
+        border: 3px solid #f3f3f3;
+        font-family: "Inter", sans-serif;
+        font-weight: 400;
+        text-align: center;
+        padding: 10px;
+        cursor: pointer;
+        transition: background-color 0.3s, color 0.3s;
+    }
+
+    .grid-button:hover {
+        background-color: rgb(39, 206, 39);
+        color: white;
+    }
+
+    .grid-button.active {
+        background-color: #28a745; /* Color when pressed */
+        color: white;
+    }
+
+    #hero {
+        padding-top: 70px;
+    }
+    #hero1{
+        padding-top: 20px;
+    }
+
+    .btn-custom {
+        background-color: rgb(39, 206, 39);
+        color: white;
+        font-weight: 900;
+        padding: 10px 20px;
+        border: none;
+        border-radius: 15px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 0.9em;
+    }
+    .language-selector-center {
+        margin-top: 20px;
+        text-align: center;
+    }
+    .btn-custom1 {
+        background-color: white;
+        color: rgb(39, 206, 39);
+        border: 2px solid rgb(39, 206, 39);
+        font-weight: 900;
+        padding: 15px 80px;
+        border-radius: 10px;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 1.5em;
+
+    }
+
+    @media (max-width: 768px) {
+        .button-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+
+        .container, .container1 {
+            padding: 0 15px;
+        }
+
+        h1 {
+            font-size: 1.8em;
+        }
+
+        p {
+            font-size: 1.1em;
+        }
+        .btn-custom {
+            width: 50%;
+            padding: 8px 10px; /* Adjusted padding for small screens */
+            font-size: 0.9em;
+        }
+        .language-selector-center {
+        margin-top: 10px; /* Reduced margin */
+    }
+    .btn-secondary {
+        width: 100%; /* Full width for better touch targets */
+        font-size: 0.5em; /* Smaller font size */
+    }
+
+    .dropdown-menu {
+        width: 100%; /* Ensure dropdown menu is full width */
+    }
+
+    .dropdown-item {
+        padding: 8px; /* Increase padding for easier touch interaction */
+        font-size: 0.5em; /* Smaller font size for dropdown items */
+    }
+    .btn-custom1 {
+        font-size: 0.5em; /* Adjust font-size for mobile */
+        padding: 7px 9px; /* Adjust padding for mobile */
+        width: 70%;
+
+    }
+
+    }
+
+    @media (max-width: 576px) {
+        .button-grid {
+            grid-template-columns: 1fr;
+        }
+
+        .blocks {
+            padding: 0 10px;
+        }
+
+        .container, .container1 {
+            padding: 0 10px;
+        }
+
+        .btn {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        h1 {
+            font-size: 1.5em;
+        }
+
+        p {
+            font-size: 1em;
+        }
+
+        .text-center.m-4 form {
+            width: 100%;
+        }
+        .btn-custom {
+            width: 40%;
+            padding: 6px 8px; /* Adjusted padding for small screens */
+            font-size: 0.5em;
+
+        }
+        #hero {
+        padding-top: 17%;
+
+        }
+        #hero1 {
+            padding-top: 3%;
+
+    }
+    .language-selector-center {
+        margin-top: 5px; /* Reduced margin for very small screens */
+    }
+    .btn-secondary {
+        font-size: 0.5em; /* Smaller font size for very small screens */
+    }
+
+    .dropdown-item {
+        padding: 8px; /* Larger padding for easier touch interaction */
+        font-size: 0.5em; /* Smaller font size for dropdown items */
+    }
+    #hero7{
+        padding-top: 10%;
+    }
+    .btn-custom1 {
+        font-size: 0.5em; /* Adjust font-size for mobile */
+        padding: 7px 9px; /* Adjust padding for mobile */
+        width: 70%;
+
+    }
+
+
+}
+</style>
+{% endblock %}
+
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<section class="mt-xxl-5">
+    <br>
+    <div class="blocks text-center align-center m-lg-5" id="block1">
+        <section id="hero"></section>
+        <h1>{{ translator.t('messages.jobster_1') }}</h1>
+        <p>
+            {{ translator.t('messages.jobster_2') }}
+        </p>
+        <section id="hero1"></section>
+        <div class="language-selector-center">
+            {% if not query_params %}
+                <button class="btn btn-custom1" onclick="authorizeUser()">{{ translator.t('messages.authorize') }}</button>
+            {% endif %}
+        </div>
+
+        <section id="hero1"></section>
+        <section id="hero1"></section>
+        <a href="#block3" class="btn btn-lg m-auto btn-custom">{{ translator.t('messages.eval_comps') }}</a>
+        <section id="hero5"></section>
+
+
+        <div class="btn-group language-selector-center">
+            <button class="btn btn-secondary dropdown-toggle" type="button" id="defaultDropdown" data-bs-toggle="dropdown" data-bs-auto-close="true" aria-expanded="false">
+                {{ translator.t('messages.choose_language') }}
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="defaultDropdown">
+                <li><a class="dropdown-item" href="#" onclick="changeLocale('en')">English</a></li>
+                <li><a class="dropdown-item" href="#" onclick="changeLocale('ru')">Русский</a></li>
+            </ul>
+
+        </div>
+        <section id="hero7"></section>
+
+
+
+    </div>
+
+
+    <div class="container align-center blocks" id="#block1">
+        <img src="/static/Figma_1.png" class="card-img-top" alt="Оценка компетенций">
+    </div>
+</section>
+<div class="container align-center text-center">
+    <section id="hero"></section>
+    <img src="/static/Figma_2.png" class="card-img-top" alt="Оценка компетенций">
+</div>
+
+<div class="container align-center blocks text-center" id="block2">
+    <div class="text-center">
+        <section id="hero"></section>
+        <p>{{ translator.t('messages.try_again') }}<b>{{ translator.t('messages.pers_anal') }}<br>{{ translator.t('messages.comps') }}
+        </b> <b>{{ translator.t('messages.parts') }}</b>{{ translator.t('messages.and') }}<b>{{ translator.t('messages.got_recs') }}</b></p>
+    </div>
+    <img src="/static/Figma_3.png" class="card-img-top" alt="Оценка компетенций">
+</div>
+
+<main>
+    <section class="mt-xxl-5" id="block3">
+        <div class="blocks">
+            <div class="container align-center blocks text-center">
+                <div class="text-center">
+                    <section id="hero"></section>
+                    <b><p>{{ translator.t('messages.choosing') }}</p></b>
+                </div>
+            </div>
+
+            <div class="space">
+                <div class="container1">
+                    <div class="button-grid">
+                        {% for vacancy in vacancies %}
+                        <button type="button"
+                                class="grid-button"
+                                data-id="{{ vacancy[0] }}"
+                                data-text="{{ vacancy[1] }}"
+                                onclick="toggleActive(this)">
+                            {{ translator.translate_text(vacancy[1]) }}
+                        </button>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="container">
+            <div class="text-center m-4">
+                <form id="buttonSAVE">
+                    <div class="cf-turnstile" data-sitekey="0x4AAAAAAAeznSQ8aX06njxJ"> </div>
+                    <button class="btn btn-lg m-auto" id="save-button" type="submit"
+                            style="color: white; font-weight: 900;
+                            background: rgb(39, 206, 39)" >
+                        {{ translator.t('messages.send') }}
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+</main>
+<script>
+
+    let selectedButtons = [];
+
+    function toggleActive(button) {
+        button.classList.toggle('active');
+        const buttonId = button.dataset.id;
+        const buttonText = button.dataset.text;
+
+        if (button.classList.contains('active')) {
+            selectedButtons.push({id: buttonId, text: buttonText});
+        } else {
+            selectedButtons = selectedButtons.filter(btn => btn.id !== buttonId);
+        }
+
+        // Enable/disable save button based on selection count
+        console.log("Selected buttons:", selectedButtons);
+    }
+
+    function sendSelectedTexts(event) {
+        event.preventDefault();
+        if (selectedButtons.length === 0) {
+            alert('{{ translator.t("messages.choose_at_least_one") }}');
+            return;
+        }
+
+
+        let selectedTexts = selectedButtons.map(btn => btn.text).join(',');
+
+        if (selectedTexts.split(',').length > 4) {
+
+            alert('{{ translator.t("messages.choose_lt_10") }}');
+            return;
+        }
+        if (window.location.search) {
+            window.location.href = '/quiz' + window.location.search + `&buttons=${encodeURIComponent(selectedTexts)}`;
+        } else {
+            window.location.href = '/quiz?buttons=' + encodeURIComponent(selectedTexts);
+        }
+    }
+
+    document.getElementById("buttonSAVE").addEventListener("click", sendSelectedTexts);
+</script>
+<script>
+    function changeLocale(locale) {
+        fetch('/set-locale', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: new URLSearchParams({
+                'locale': locale
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.message === "Locale updated") {
+                location.reload();
+            } else {
+                console.error("Failed to update locale:", data.message);
+            }
+        })
+        .catch(error => console.error('Error:', error));
+        window.location.href = "/";
+    }
+
+    function authorizeUser() {
+        window.location.href = "/authorize_user";
+    }
+</script>
+{% endblock %}

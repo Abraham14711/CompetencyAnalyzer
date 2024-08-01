@@ -1,0 +1,80 @@
+{% extends "shared/base.html" %}
+
+{% block title %}User Auth Page{% endblock %}
+
+{% block content %}
+
+{% block style %}
+<style xmlns="http://www.w3.org/1999/html">
+
+    .container1 {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+    }
+
+    .aligncenter {
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        width: 50%;
+    }
+    .button {
+        background-color: #4CAF50;
+        color: white;
+        padding: 10px 15px;
+        border-width: 1500px;
+        border: none;
+        border-radius: 5px;
+        cursor: pointer;
+    }
+    #space{
+        padding-top: 1%;
+    }
+    #space2{
+      padding-top: 7%;
+    }
+    
+
+
+</style>
+  {% endblock %}
+  <body>
+    <div class="container1" >
+      <div class="header">
+          <center><h2><b>{{ translator.t('messages.hello_auth') }}<br> <section id="space"></section>{{ translator.t('messages.pls_auth') }}</b></h2></center>
+        <div class="img-box">
+            <section id="space"></section>
+            <img class="aligncenter" >
+            <section id="space"></section>
+            <i class="bi bi-person-check"></i>
+            <center>
+              <svg xmlns="http://www.w3.org/2000/svg" width="145" height="145" fill="currentColor" class="bi bi-person-check" viewBox="0 0 16 16" style="color: #4CAF50;">
+                <path d="M12.5 16a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7m1.679-4.493-1.335 2.226a.75.75 0 0 1-1.174.144l-.774-.773a.5.5 0 0 1 .708-.708l.547.548 1.17-1.951a.5.5 0 1 1 .858.514M11 5a3 3 0 1 1-6 0 3 3 0 0 1 6 0M8 7a2 2 0 1 0 0-4 2 2 0 0 0 0 4"/>
+                <path d="M8.256 14a4.5 4.5 0 0 1-.229-1.004H3c.001-.246.154-.986.832-1.664C4.484 10.68 5.711 10 8 10q.39 0 .74.025c.226-.341.496-.65.804-.918Q8.844 9.002 8 9c-5 0-6 3-6 4s1 1 1 1z"/>
+              </svg>
+          </center>
+          
+        </div>
+      </div>
+        <script async src="https://telegram.org/js/telegram-widget.js?22" data-telegram-login="Competency_Jobster_Auth_bot" data-size="large" data-auth-url="{{ home }}"
+ data-request-access="write"></script>
+ <section id="space"></section>
+
+
+<a href="https://competency.jobster.uz" class="button" style="text-decoration: none;">{{ translator.t('messages.cont_no') }}</a>
+<section id="space2">
+</section><center>
+  <b><p>{{ translator.t('messages.you_will_get') }}<br>
+    {{ translator.t('messages.also_bla_bla') }}<br>
+    {{ translator.t('messages.bla_bla_2') }}</p></b>
+</center>
+        
+</div>        
+    </div>
+    
+  </body>
+
+{%endblock%}

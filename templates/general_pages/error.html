@@ -1,0 +1,76 @@
+{% extends "shared/base.html" %}
+
+{% block title %}{{ translator.t('messages.error_page') }}{% endblock %}
+
+{% block content %}
+
+{% block style %}
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+ <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+    }
+
+    .page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    }
+
+    .button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 15px;
+/*       border-weight: 1500px; */
+      border-width: 1500px;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    .error-heading{
+        
+        font-size: 150%; 
+            font-weight: bold;
+            color: rgb(39, 206, 39);
+            margin-bottom: 5%;
+    }
+    .error-message {
+            font-size: 120%; 
+            margin-bottom: 5%;
+        }
+        .error-button {
+            background-color: rgb(39, 206, 39);
+            color: #ffffff;
+            padding: 2% 5%; 
+            border: none;
+            border-radius: 20px;
+            font-size: 100%; 
+            cursor: pointer;
+            text-decoration: none;
+        }
+        .error-button:hover {
+            background-color: rgba(16, 235, 70, 0.475);
+        }
+        #hero {
+            padding-top: 1%;
+        }
+  </style>
+
+
+{% endblock %}
+
+<div class="vh-100 d-flex justify-content-center align-items-center">
+  <div class="container text-center">
+    <b><div class="error-heading">{{ translator.t('messages.error_head') }}</div></b>
+        <section id="hero"></section>
+        <div class="error-message">{{ translator.t('messages.error_message') }}</div>
+        <section id="hero"></section>
+        <a href="https://competency.jobster.uz" class="error-button">{{ translator.t('messages.back_to_main_page') }}</a>
+  </div>
+</div>
+
+{% endblock %}

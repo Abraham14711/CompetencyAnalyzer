@@ -1,0 +1,56 @@
+services:
+  postgres-database:
+    image: postgres
+    container_name: postgres
+    ports:
+      - '5432:5432'
+    restart: always
+    env_file: ".env"
+    volumes:
+      - postgres-db:/var/lib/postgresql/data
+    networks:
+      - netbetweenNginxAndBack
+
+  web:
+    build:
+      context: .
+      dockerfile: app.Dockerfile
+    env_file: ".env"
+    ports:
+      - 8000:8000
+    environment:
+      EXAMPLE_DEBUG: "true"
+    depends_on:
+      - postgres-database
+    networks:
+      - netbetweenNginxAndBack
+
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx.Dockerfile
+    ports:
+      - 81:80
+      - 443:443
+    depends_on:
+      - web
+    links:
+      - web
+    networks:
+      - netbetweenNginxAndBack
+
+
+  telegram-bot:
+    build:
+      context: .
+      dockerfile: telebot.Dockerfile
+    env_file: ".env"
+    ports:
+      - 7999:7999
+
+volumes:
+  postgres-db:
+
+networks:
+  netbetweenNginxAndBack:
+    driver: bridge

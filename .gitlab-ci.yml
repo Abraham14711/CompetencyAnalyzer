@@ -1,0 +1,101 @@
+variables:
+  IMAGE_TAG: python-app-1.0
+  CONTAINER_TEST_IMAGE: $CI_REGISTRY_IMAGE:latest
+
+stages:
+  - .pre
+  - build
+  - test
+  - lint
+  - deploy
+
+default:
+  image: harbor.pg.innopolis.university/docker-hub-cache/python:3.9.19-slim
+
+build-app:
+  before_script:
+    - cat $PRODUCTION_ENV_FILE > .env
+
+  services:
+    - postgres
+
+  stage: build
+
+  image: harbor.pg.innopolis.university/docker-hub-cache/woolfer0097kek/competency_analyser:latest
+
+  script: docker build .
+  
+unit-tests:
+  stage: test
+
+  before_script:
+    - cat $PRODUCTION_ENV_FILE > .env
+    - pip install poetry
+    - poetry install
+    - source `poetry env info --path`/bin/activate
+
+  script:
+    - poetry run pytest --junitxml=./unit_test_result.xml
+    - ls -lh
+
+  artifacts:
+    when: always
+    expire_in: 14 days
+    reports:
+      junit: unit_test_result.xml
+
+  rules:
+    - allow_failure: true
+
+linting:
+  stage: lint
+
+  before_script:
+    - cat $PRODUCTION_ENV_FILE > .env
+    - pip install poetry
+    - poetry install
+    - source `poetry env info --path`/bin/activate
+  
+  script:
+    - poetry run flake8 competencyAnalyser
+
+  rules:
+    - if: ($CI_COMMIT_BRANCH != $CI_DEFAULT_BRANCH)
+      changes:
+        - competencyAnalyser/*
+      allow_failure: true
+
+deploy_app:
+    stage: deploy
+    image: alpine:latest
+    before_script:
+      - apk add openssh-client
+      - eval $(ssh-agent -s)
+      - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add -
+      - mkdir -p ~/.ssh
+      - chmod 777 ~/.ssh
+    script:
+      - echo "Deploying..."
+      - ssh -o StrictHostKeyChecking=no $SSH_USER@$VM_IPADDRESS "cd /etc/nginx/swp-project && git pull"
+      - echo "CI_COMMIT_BRANCH == $CI_COMMIT_BRANCH"
+      - echo "CI_DEFAULT_BRANCH == $CI_DEFAULT_BRANCH"
+      - echo "$ENV_SCOPE"
+      - docker compose down
+      - docker image tag competency_analyser-web latest
+      - docker image tag competency_analyser-telegram-bot latest
+    artifacts:
+      paths:
+        - public
+    rules:
+        - if: $CI_COMMIT_BRANCH =~ /^feature.*/
+          variables:
+            ENV_SCOPE: "staging"
+        - if: $CI_COMMIT_BRANCH =~ /^fix.*-[0-9].*/
+          variables:
+              ENV_SCOPE: "testing"
+        - if: $CI_COMMIT_BRANCH == $CI_DEFAULT_BRANCH
+          variables:
+              ENV_SCOPE: "production"
+          when: manual
+    environment:
+        name: $ENV_SCOPE

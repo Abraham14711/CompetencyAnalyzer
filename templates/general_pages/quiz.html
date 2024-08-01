@@ -1,0 +1,454 @@
+{% extends "shared/base.html" %}
+
+{% block head %}
+<meta id="my-data" data-name="picked_vacancies" data-other="{{ picked_vacancies }}">
+{% endblock %}
+
+{% block title %}{{ quiz_title }}{% endblock %}
+
+{% block content %}
+{% block style %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
+        crossorigin="anonymous"></script>
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+    }
+
+    .nav {
+        background-color: white;
+        overflow: hidden;
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+    }
+
+    .nav .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 14px 20px;
+    }
+
+    .nav .logo {
+        color: black;
+        font-size: 1.5em;
+        font-weight: bold;
+    }
+
+    .nav ul {
+        list-style: none;
+        margin: 0;
+        padding: 0;
+        display: flex;
+    }
+
+    .nav ul li {
+        margin-left: 20px;
+    }
+
+    .nav ul li a {
+        color: black;
+        text-decoration: none;
+        padding: 14px 20px;
+        display: block;
+    }
+
+    .nav ul li a:hover, .nav ul li a.button {
+        background-color: #575757;
+        border-radius: 4px;
+    }
+
+    .nav ul li a.button {
+        background-color: rgb(39, 206, 39);
+        color: white;
+        border-radius: 15px 15px 15px 15px;
+    }
+
+    .button {
+        background-color: rgb(39, 206, 39);
+        color: white;
+        border-radius: 15px 15px;
+        padding: 25px 20px;
+
+    }
+
+    .upe-mutistep-form .step {
+        display: none;
+    }
+
+    .upe-mutistep-form .step-header .steplevel {
+        position: relative;
+        flex: 1;
+        padding-bottom: 30px;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.active {
+        font-weight: 600;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.finish {
+        font-weight: 600;
+        color: #009688;
+    }
+
+    .upe-mutistep-form .step-header .steplevel::before {
+
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 0;
+        transform: translateX(-50%);
+        z-index: 9;
+        width: 20px;
+        height: 20px;
+        background-color: #d5efed;
+        border-radius: 50%;
+        border: 3px solid #ecf5f4;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.active::before {
+        background-color: #3fbdb4;
+        border: 3px solid #d5f9f6;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.finish::before {
+        background-color: #3fbdb4;
+        border: 3px solid #3fbdb4;
+    }
+
+    .upe-mutistep-form .step-header .steplevel::after {
+        content: "";
+        position: absolute;
+        left: 50%;
+        bottom: 8px;
+        width: 100%;
+        height: 3px;
+        background-color: #f3f3f3;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.active::after {
+        background-color: #a7ede8;
+    }
+
+    .upe-mutistep-form .step-header .steplevel.finish::after {
+        background-color: #009688;
+    }
+
+    .upe-mutistep-form .step-header .steplevel:last-child:after {
+        display: none;
+    }
+
+    .page {
+
+        position: absolute;
+        top: 25%;
+        left: 25%;
+        margin-right: 25%;
+        justify-content: center;
+        box-shadow: none;
+    }
+    #hero{
+        padding-top: 30px;
+    }
+
+    @media(max-width : 1200px){
+        .page{
+            position: absolute;
+        top: 15%;
+        left: 10%;
+        margin-right: 10%;
+        justify-content: center;
+        box-shadow: none;
+        }
+    }
+</style>
+
+{% endblock %}
+
+<div class="page">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <br>
+    <h2>
+        <div style="text-align: center;">{{ translator.t('messages.say_true') }}</div>
+    </h2>
+    <h2>
+        <div style="text-align: center;">{{ translator.t('messages.help_ai') }}</div>
+    </h2>
+    <br>
+    <div class="container">
+
+        <div class="col-md-auto">
+            <form method="POST" class="upe-mutistep-form" id="Upemultistepsform" action="/answers" name = "f1">
+
+                <div class="step-header d-flex mb-2">
+                    <span class="steplevel"></span>
+
+                    {% for question in questions %}
+                    <span class="steplevel"></span>
+                    {% endfor %}
+
+                </div>
+                <div class="step">
+                    <div class="mb-3">
+                        <input class="form-control" placeholder="{{ translator.t('messages.name') }}" name="pers_data">
+                    </div>
+                    <div class="mb-3">
+                        <input type="email" class="form-control" placeholder="Email" name="email">
+                        <input type="hidden" name="picked_vacancies" value="{{ picked_vacancies }}">
+
+
+                        <input type="hidden" name="id" value="">
+                        <input type="hidden" name="first_name" value="">
+                        <input type="hidden" name="username" value="">
+                        <input type="hidden" name="photo_url" value="">
+                        <input type="hidden" name="auth_date" value="">
+                        <input type="hidden" name="hash" value="">
+                    </div>
+                </div>
+                {% for data in questions %}
+                {% if data[2] % 2 != 0 %}
+                <div class="step">
+                    <div class="mb-3">
+                        {% set question = data[0] %}
+                        <label for="exampleFormControlTextarea1" class="form-label">{{
+                            translator.translate_text(question) }}</label>
+                        {% for answer in data[1].split("\n") %}
+                        <div class="form-check">
+                            <input class="form-check-input" type="radio" name="{{ question }}" value="{{ answer }}"
+                                   id="{{ question }}_{{ answer }}">
+                            <label class="form-check-label" for="{{ question }}_{{ answer }}">{{
+                                translator.translate_text(answer) }}</label>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% else %}
+                <div class="step">
+                    <div class="mb-3">
+                        {% set question = data[0] %}
+                        <label for="exampleFormControlTextarea1" class="form-label">{{
+                            translator.translate_text(question) }}</label>
+                        <textarea class="form-control" id="exampleFormControlTextarea1" name="{{question}}"
+                                  rows="5"></textarea>
+                    </div>
+                </div>
+                {% endif %}
+                {% endfor %}
+                <div class="step">
+                    <section id="hero"></section>
+                    <h3>{{ translator.t('messages.ready') }}</h3>
+                    <section id="hero"></section>
+                </div>
+                <div class="d-flex btn-row">
+                    <button class="btn btn-success fw-bold m-1" style="background-color: #36C859;" id="prevBtn"
+                            onclick="nextPrev(-1)"
+                            type="button">{{ translator.t('messages.back') }}
+                    </button>
+                    <button class="btn btn-success fw-bold m-1" style="background-color: #36C859;" id="nextBtn"
+                            onclick="nextPrev(1)"
+                            type="button"> {{ translator.t('messages.continue') }}
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+{$ block scripts %}
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
+        crossorigin="anonymous"></script>
+<script>
+    document.f1.id.value=getId();
+    document.f1.first_name.value=get_first_name();
+    document.f1.username.value=get_username();
+    document.f1.photo_url.value=get_photo_url();
+    document.f1.auth_date.value=get_auth_date();
+    document.f1.hash.value=get_hash();
+
+
+    var currentTab = 0;
+    var answerss=[];
+    tabShow(currentTab);
+
+    function tabShow(n) {
+        var x = document.getElementsByClassName("step");
+        x[n].style.display = "block";
+        if (n === 0) {
+            document.getElementById("prevBtn").style.display = "none";
+        } else {
+            document.getElementById("prevBtn").style.display = "inline";
+        }
+        if (n === (x.length - 1)) {
+            document.getElementById("nextBtn").innerHTML = "{{ translator.t('messages.send') }}"
+        } else {
+            document.getElementById("nextBtn").innerHTML = "{{ translator.t('messages.continue') }}"
+        }
+        activelevel(n)
+    }
+
+
+
+    function nextPrev(n) {
+        var x = document.getElementsByClassName("step");
+        if (n === 1 && !validateForm()) return false;
+
+
+        var currentStep = x[currentTab];
+        var selectedRadio = currentStep.querySelector('input[type="radio"]:checked');
+        if (selectedRadio) {
+            answerss[currentTab - 1] = selectedRadio.value; // Adjust index to match questions
+        }
+        console.log(answerss)
+        x[currentTab].style.display = "none";
+        currentTab = currentTab + n;
+        if (currentTab >= x.length) {
+            const controller = new AbortController(); 
+            const timeoutId = setTimeout(() => controller.abort(), 30000);
+            document.getElementById("Upemultistepsform").submit();
+        }
+        tabShow(currentTab);
+    }
+
+    function backPrev(n) {
+        var x = document.getElementsByClassName("step");
+        x[n].style.display = "block";
+    }
+
+    function activelevel(n) {
+        var i, x = document.getElementsByClassName("steplevel");
+        for (i = 0; i < x.length; i++) {
+            x[i].className = x[i].className.replace(" active", "");
+        }
+        x[n].className += " active";
+    }
+
+    async function submitForm() {
+// Collect all textarea values
+        const textareas = document.querySelectorAll('textarea.form-control');
+        const formData = {};
+        textareas.forEach((textarea, index) => {
+            formData[`textarea${index + 1}`] = textarea.value;
+        });
+
+        formData["answers"] = answerss;
+
+        formData["picked_vacancies"] = $('#my-data').data();
+
+        fetch('...', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData),
+        })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Success:', data);
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    }
+    function validateForm() {
+        var valid = true;
+        var email = document.querySelector('input[name="email"]').value;
+        var emailPattern = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+        if (!emailPattern.test(email)) {
+            valid = false;
+            alert('Пожалуйста, введите корректную электронную почту.');
+        }
+        
+        var prohibitedPattern = /[\[\]\{\}\#\$\(\)\@]/;
+        var currentStep = document.getElementsByClassName("step")[currentTab];
+        var textarea = currentStep.querySelector("textarea");
+        if (textarea) {
+            var textareaValue = textarea.value.trim();
+            if (textareaValue === "") {
+                valid = false;
+                alert('Пожалуйста, заполните поле ответа.');
+        } else if (prohibitedPattern.test(textareaValue)) {
+            valid = false;
+            alert('Пожалуйста, не используйте символы в своём ответе.');
+        }
+    }
+
+        
+        return valid;
+    }
+function getId(){
+    try{
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('id');
+    return paramValue;
+    } catch(error){
+     return "default";
+     }
+    }
+
+    function get_first_name() {
+    try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('first_name');
+    return paramValue;
+    } catch (error) {
+        return "default";
+    }
+}
+
+function get_username() {
+    try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('username');
+    return paramValue;
+    } catch (error) {
+        return "default";
+    }
+}
+
+function get_photo_url() {
+    try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('photo_url');
+    return paramValue;
+    } catch (error) {
+        return "default";
+    }
+}
+
+function get_auth_date() {
+    try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('auth_date');
+    return paramValue;
+    } catch (error) {
+        return "default";
+    }
+}
+
+function get_hash() {
+    try {
+    const queryString = window.location.search;
+    const urlParams = new URLSearchParams(queryString);
+    const paramValue = urlParams.get('hash');
+    return paramValue;
+    } catch (error) {
+        return "default";
+    }
+}
+
+
+</script>
+{% endblock %}

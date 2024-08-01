@@ -1,0 +1,458 @@
+Examples of desired behavior for each competency. Based on these, you need to evaluate the candidate's competencies according to their answers to the questions:
+
+Adaptability
+
+ready to change their routine
+not rigid
+not embarrassed to adapt, relinquishing their individuality
+
+###
+
+Emphasis on Quality
+
+works meticulously, makes very few mistakes
+suggests improvements
+demonstrates exemplary level of behavior
+ensures a high level of quality
+
+###
+
+Ambition
+
+makes efforts in learning and development
+learns from successful people
+quite energetic
+builds their own career plan and follows it
+
+###
+
+Problem Analysis
+
+extracts the essence from related issues
+works and thinks at a level appropriate to their position
+sees connections between different problems
+not satisfied with incomplete information; wants to know more
+
+###
+
+Negotiation
+
+knows how to handle objections in negotiations
+well prepared for the start of negotiations
+knows their goals and follows them
+pays attention to the verbal and non-verbal behavior of the other person
+handles objections well in negotiations
+
+###
+
+Vision
+
+does not act impulsively but thinks about the consequences
+gathers large amounts of information; curious
+has excellent cognitive abilities
+accepts many ideas, not discarding them immediately due to infeasibility
+grasps the essence from the information received
+
+###
+
+Attention to Detail
+
+remains vigilant and focused
+irritated by small mistakes
+stays focused when working with detailed information
+
+###
+
+Flexibility
+
+has clear goals
+distinguishes process from content
+able to question their own approach
+
+###
+
+Delegation
+
+believes in the positive qualities of employees
+empowers others when it serves the goal
+delegates to the right people
+
+###
+
+Discipline
+
+acknowledges the correctness of norms and rules
+has no difficulty adapting to existing rules and orders
+understands the importance of following rules
+
+###
+
+Identification with Leadership
+
+able to put themselves in the place of (senior) management
+can cope with the 'dual loyalty' policy
+loyal to the existing policy
+
+###
+
+Initiative
+
+takes an active position
+first to propose plans and ideas
+creates and seizes opportunities
+does what they were not asked to do
+
+###
+
+Innovative Energy
+
+informed about trends and developments relevant to their professionalism and organization
+transforms trends into innovations
+aware of future needs and wishes of the client
+dares to swim against the current
+
+###
+
+Team Leadership
+
+defines the task facing the team
+shows what results are expected from the team
+demonstrates their own position and approach
+clearly defines the role of each team member
+
+###
+
+Commercial Energy
+
+demonstrates commercial awareness and understanding
+identifies opportunities and products in the market and can assess commercial potential
+identifies the needs and wants of clients
+conducts simple sales meetings properly
+acts convincingly and creates a good atmosphere to persuade (potential) clients to purchase
+
+###
+
+Performance Control
+
+systematically conducts business (and manages their time well)
+likes to be informed
+disciplined
+
+###
+
+Mastery
+
+has deep knowledge in their field
+performs their work professionally
+maintains and deepens their knowledge and skills
+does their job like an experienced professional
+
+###
+
+Persistence
+
+does not give up when difficulties arise
+perseveres until it becomes clear that the goal cannot be achieved
+knows when to continue and when to abandon an unattainable goal
+
+###
+
+Independence
+
+not directly influenced by others' opinions
+has their own beliefs
+able to resist public pressure
+moves on their own, independent course
+
+###
+
+Conduct
+
+observes etiquette rules
+shows respect for others
+looks well-groomed
+
+###
+
+Training and Coaching
+
+understands their position as a coach and its influence on others
+has the skills, knowledge, and experience to train
+has adequate self-perception
+
+###
+
+Public Awareness
+
+has knowledge on a wide range of issues
+reads relevant literature
+has broad professional knowledge in their organization or field
+possesses fresh general information
+
+###
+
+Sociability
+
+educated and well-read in a wide range of issues
+meets new people easily and finds pleasure in it
+does not suffer from shyness
+easily gets along with others
+
+###
+
+Organizational Sensitivity
+
+knows how the organization functions
+aware of what is happening in the work environment
+able to look beyond their team or department
+
+###
+
+Customer Orientation
+
+shows respect to clients, regardless of the validity of their demands or complaints
+shows readiness to come to a solution
+strives for a win-win situation
+identifies opportunities to inform clients about services, anticipating future needs
+
+###
+
+Business Orientation
+
+takes justified risks
+does not require much support from others
+able to handle stress
+ambitious
+knows when to say "yes" or "no"
+
+###
+
+Result Orientation
+
+organizes work from the perspective of goal achievability
+takes on neutrally controllable goals
+gives direction to achieve results
+asks for goals to be achieved
+
+###
+
+Responsibility
+
+adheres to deadlines and prescriptions
+honest when foreseeing problems or mistakes
+completes work on time and in accordance with agreements
+takes responsibility for mistakes
+
+###
+
+Written Expression
+
+has excellent language and grammar knowledge
+able to construct arguments
+has an appropriate lexicon
+
+###
+
+Planning and Organization
+
+uses time management
+works constructively
+separates essential from non-essential
+
+###
+
+Political Sensitivity
+
+aware of political relationships
+can put themselves in the place of both a politician and the people
+demonstrates diplomacy and tact in delicate matters
+
+###
+
+Need for Achievement
+
+not afraid of failure
+makes efforts and shows enthusiasm
+motivated to work at the peak of their capabilities
+
+###
+
+Insight
+
+can recognize relationships and connections
+understands complex situations, problems, and processes
+explains simple logical relationships and connections
+systematically investigates and analyzes
+anticipates problems and responds appropriately
+
+###
+
+Work Contacts
+
+regularly communicates through their contacts
+attends meetings to establish contacts
+actively interested in other people
+takes the initiative in seeking new contacts
+actively works on creating a (social) network of contacts
+
+###
+
+Employee Development
+
+does not put themselves first
+rejoices in the successes of others
+distinguishes competence components and talents in others
+
+###
+
+Decisiveness
+
+expresses their opinion concisely
+takes a position and makes decisions
+plans based on previously made decisions
+does not hesitate in making decisions / does not avoid decision-making
+
+###
+
+Self-development
+
+actively seeks feedback to use it for themselves
+regularly evaluates their own approach, focusing on changes and improvement
+demonstrates a realistic view of their strengths and weaknesses
+spends a noticeable amount of time and energy on self-development
+strives to expand their perspectives
+
+###
+
+Verbal Expression
+
+speaks the correct language
+speaks clearly
+able to use their voice well (sound, intonation)
+
+###
+
+Courage
+
+understands the size (range) of risks taken
+sees the difference between courage and audacity
+takes measured risks
+
+###
+
+Cooperation
+
+has the right self-perception
+knows what role they prefer to play in a team
+can let group interests prevail over their own interests
+
+###
+
+Learning Ability
+
+does not give up easily
+demonstrates discipline in study and learning
+motivated in learning
+motivated in learning
+reads relevant literature to improve
+
+###
+
+Creative Approach
+
+thinks independently
+has the courage to find original solutions to problems
+believes in their abilities
+
+###
+
+Persuasiveness
+
+demonstrates enthusiasm and talent
+demonstrates belief in their own convictions
+uses non-verbal behavior to strengthen their presentability
+uses logical and understandable arguments
+
+###
+
+Presentation Skills
+
+speaks the correct language
+capable of public speaking
+handles stress well
+
+###
+
+Listening Skills
+
+patiently allows the other person to finish their story
+knows when to keep silent
+shows genuine interest
+
+###
+
+Persistence
+
+clearly expresses their opinions and views
+expresses their thoughts when something goes wrong, not waiting for something to happen
+confidently talks about their attitude and views, looking the person in the eye
+expresses their opinion (for example, at a meeting), even if it contradicts colleagues' positions
+remains calm even if others raise their voice and put pressure
+
+###
+
+Management
+
+adapts their leadership style to the level and competence of the employee; able to use different styles
+applies various leadership styles sensibly, focusing on people and results
+aware of their place in the hierarchy
+
+###
+
+Conflict Management
+
+identifies the interests and motivations of other parties
+assesses the severity of the conflict and the emotions prevailing in it
+able to assess the potential for conflict development
+
+###
+
+Stress Management
+
+understands what stress they can withstand
+has a correct self-image
+separates the main from the secondary
+
+###
+
+Judgment Formation
+
+distinguishes facts from opinions
+applies adequate criteria in forming their judgments
+weighs alternatives
+
+###
+
+Integrity
+
+provides information consistently and honestly (one story for all)
+treats everyone equally, with respect and without discrimination
+will not abuse their power or advanced knowledge
+protects confidential information
+keeps commitments
+
+###
+
+Sensitivity
+
+has a "social antenna" (socially perceptive)
+pays attention to other people and their behavior (what they say and do)
+has the right self-perception
+
+###
+
+Energy
+
+enduring
+able to distribute their energy wisely
+understands their own strengths
